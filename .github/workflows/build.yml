@@ -32,9 +32,12 @@ jobs:
           flutter create --org com.example --project-name mm_banking_vpn temp_app
           cp pubspec.yaml temp_app/
           cp lib/main.dart temp_app/lib/
-          if [ -f "android/app/src/main/AndroidManifest.xml" ]; then
-            cp android/app/src/main/AndroidManifest.xml temp_app/android/app/src/main/
-          fi
+          
+          # Configure Android Gradle settings
+          sed -i 's/compileSdkVersion.*/compileSdkVersion 34/' temp_app/android/app/build.gradle
+          sed -i 's/targetSdkVersion.*/targetSdkVersion 34/' temp_app/android/app/build.gradle
+          sed -i 's/minSdkVersion.*/minSdkVersion 21/' temp_app/android/app/build.gradle
+          
           cd temp_app
           flutter pub get
 
