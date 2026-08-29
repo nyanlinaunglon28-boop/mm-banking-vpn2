@@ -31,6 +31,10 @@ jobs:
           flutter create --org com.example --project-name mm_banking_vpn temp_app
           cp pubspec.yaml temp_app/
           cp lib/main.dart temp_app/lib/
+          
+          # Set minSdkVersion to 21 for v2ray support
+          sed -i 's/flutter.minSdkVersion/21/g' temp_app/android/app/build.gradle
+          
           cd temp_app
           flutter pub get
 
