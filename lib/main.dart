@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_v2ray/flutter_v2ray.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 void main() {
   runApp(const MyApp());
@@ -52,16 +51,13 @@ class _VPNHomeScreenState extends State<VPNHomeScreen> {
   }
 
   Future<void> toggleVPN() async {
-    await Permission.notification.request();
-
     if (isConnected) {
       await flutterV2ray.stopV2Ray();
     } else {
       if (await flutterV2ray.requestPermission()) {
-        final V2RayURL parser = FlutterV2ray.parseFromURL(v2rayConfigLink);
         await flutterV2ray.startV2Ray(
           remark: "Myanmar Banking VPN",
-          config: parser.fullConfiguration,
+          config: v2rayConfigLink,
           blockedApps: null,
         );
       }
