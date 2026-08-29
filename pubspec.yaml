@@ -9,8 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_v2ray: ^0.2.2
-  permission_handler: ^11.3.1
+  flutter_v2ray: ^0.2.1
+  permission_handler: ^11.0.0
 
 dev_dependencies:
   flutter_test:
