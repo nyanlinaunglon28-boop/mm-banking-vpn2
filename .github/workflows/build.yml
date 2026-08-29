@@ -32,7 +32,9 @@ jobs:
           flutter create --org com.example --project-name mm_banking_vpn temp_app
           cp pubspec.yaml temp_app/
           cp lib/main.dart temp_app/lib/
-          cp android/app/src/main/AndroidManifest.xml temp_app/android/app/src/main/
+          if [ -f "android/app/src/main/AndroidManifest.xml" ]; then
+            cp android/app/src/main/AndroidManifest.xml temp_app/android/app/src/main/
+          fi
           cd temp_app
           flutter pub get
 
